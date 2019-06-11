@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "WorkshopSim", "WorkshopSim\WorkshopSim.sfproj", "{DD4B6F79-27BE-46C4-BF6A-66C938CC18DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sim", "Sim", "{3DFD3B49-205E-45AC-9F3A-E13CD991DFC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD4B6F79-27BE-46C4-BF6A-66C938CC18DE}.Debug|x64.ActiveCfg = Debug|x64
+		{DD4B6F79-27BE-46C4-BF6A-66C938CC18DE}.Debug|x64.Build.0 = Debug|x64
+		{DD4B6F79-27BE-46C4-BF6A-66C938CC18DE}.Debug|x64.Deploy.0 = Debug|x64
+		{DD4B6F79-27BE-46C4-BF6A-66C938CC18DE}.Release|x64.ActiveCfg = Release|x64
+		{DD4B6F79-27BE-46C4-BF6A-66C938CC18DE}.Release|x64.Build.0 = Release|x64
+		{DD4B6F79-27BE-46C4-BF6A-66C938CC18DE}.Release|x64.Deploy.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DD4B6F79-27BE-46C4-BF6A-66C938CC18DE} = {3DFD3B49-205E-45AC-9F3A-E13CD991DFC5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F03330A-E9F8-4DEF-8A2F-2F7E99663B7A}
+	EndGlobalSection
+EndGlobal
