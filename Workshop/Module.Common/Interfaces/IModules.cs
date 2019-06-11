@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using BinClass.Common.Types;
 using Microsoft.ServiceFabric.Actors;
 using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
 using Microsoft.ServiceFabric.Services.Remoting;
@@ -31,6 +32,8 @@ namespace ModuleActorService.Interfaces
 
         Task SetSimData(SimResult simResult, CancellationToken cancellationToken);
 
-        Task<SimResult> GetSimData(CancellationToken cancellationToken);        
+        Task<SimResult> GetSimData(CancellationToken cancellationToken);
+
+        Task SetBinClass(BinClassResult binClassResult, CancellationToken cancellationToken);
     }
 }

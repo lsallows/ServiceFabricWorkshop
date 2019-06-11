@@ -13,16 +13,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ServiceFabric.Services.Remoting" Version="3.3.664" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="Types\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.ServiceFabric.Actors" Version="3.3.664" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\BinClass.Common\BinClass.Common.csproj" />
   </ItemGroup>
 
 </Project>

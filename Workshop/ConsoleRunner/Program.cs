@@ -20,6 +20,7 @@ namespace ConsoleRunner
                 var menu = new EasyConsole.Menu()
                     .Add("Get module info", () => GetActorInfo())
                     .Add("Add produced event", () => AddProducedEvent())
+                    .Add("Get sim data", () => GetSimData())
                     .Add("Quit", () => exit = true);
                 menu.Display();
 
@@ -47,6 +48,22 @@ namespace ConsoleRunner
             var actor = GetActor();
             var cts = new CancellationTokenSource(15000);
             actor.AddProducedEvent(new Module.Common.Types.ProducedEvent() { Location = "Console", TimeStamp = DateTime.Now }, cts.Token);
+        }
+
+        static void GetSimData()
+        {
+            var actor = GetActor();
+            var cts = new CancellationTokenSource(15000);
+            var simData = actor.GetSimData(cts.Token).Result;
+            if (simData == null)
+            {
+                Console.WriteLine("SimData is null");
+            }
+            else
+            {
+                Console.WriteLine($"SimData efficiency: {simData.Efficiency}");
+                Console.WriteLine($"SimData timestamp: {simData.TimeStamp}");
+            }
         }
 
         static IModules GetActor()

@@ -7,6 +7,7 @@ using Microsoft.ServiceFabric.Actors.Runtime;
 using Module.Common.Types;
 using ModuleActorService.Interfaces;
 using ModuleActorService.Interfaces.Types;
+using BinClass.Common.Types;
 
 namespace Modules
 {
@@ -111,6 +112,13 @@ namespace Modules
             var result = await this.StateManager.TryGetStateAsync<SimResult>(SIMDATASTATENAME, cancellationToken);
             return result.HasValue ? result.Value : null;
         }
+
+        public async Task SetBinClass(BinClassResult binClassResult, CancellationToken cancellationToken)
+        {
+            ActorEventSource.Current.ActorMessage(this, "SetBinClass called");
+            await this.StateManager.AddOrUpdateStateAsync(BINCLASSSTATENAME, binClassResult, (key, value) => binClassResult, cancellationToken);
+        }
+
 
         /// <summary>
         /// This method is called whenever an actor is activated.
