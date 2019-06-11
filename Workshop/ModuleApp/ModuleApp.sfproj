@@ -32,6 +32,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ModuleManager\ModuleManager.csproj" />
+    <ProjectReference Include="..\ModulesWeb\ModulesWeb.csproj" />
     <ProjectReference Include="..\Modules\Modules.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

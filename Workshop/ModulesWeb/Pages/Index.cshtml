@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row" id="content">
+    <div class="col-lg-6">
+        <h3>Modules</h3>
+        <ul id="module-list"></ul>
+    </div>
+    <div class="col-lg-6">
+        <div id="details"></div>
+        
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+    $(function () {
+        var loadModules = function () {
+            $('#module-list').empty();
+            $.get('/api/module').done(function (modules) {
+                $.each(modules, function (i, module) {
+                    var item = `<li>
+                            <span class="entry">
+                                <strong>${module}</strong>
+                                </span>
+                                <span class ="details" data-id="${module}">Details</span
+                            </li>`;
+                    $('#module-list').append(item);
+                });
+            });
+        }
+
+        loadModules();
+        $('#module-list').on('click', '.edit, .details', function () {
+            var cmd = $(this);
+            $.get(`/api/module/${cmd.data('id')}`).done(function (module) {
+                if (cmd.hasClass('details')) {                    
+                    $('#details').empty().append(
+                        `<h3>Details</h3>
+                    <strong>SubID: </strong>${module.subId}<br>
+                    <strong>Product Status: </strong>${module.productStatus}<br>
+                    <strong>Product Status Timestamp: </strong>${module.productStatusTimestamp}<br>
+                    <strong>Product Status Location: </strong>${module.productStatusLocation}<br>
+                    <strong>Last Seen Location: </strong>${module.lastSeenLocation}<br>
+                    <strong>Last Seen Timestamp: </strong>${module.lastSeenTimestamp}<br>`
+                    );
+                }
+            });
+        });
+
+    });
+    </script>
+}

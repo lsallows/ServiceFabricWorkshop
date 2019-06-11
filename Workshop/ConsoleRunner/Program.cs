@@ -1,6 +1,8 @@
 ﻿using EasyConsole;
 using Microsoft.ServiceFabric.Actors;
 using Microsoft.ServiceFabric.Actors.Client;
+using Microsoft.ServiceFabric.Services.Remoting.Client;
+using Module.Common;
 using ModuleActorService.Interfaces;
 using System;
 using System.Threading;
@@ -21,6 +23,7 @@ namespace ConsoleRunner
                     .Add("Get module info", () => GetActorInfo())
                     .Add("Add produced event", () => AddProducedEvent())
                     .Add("Get sim data", () => GetSimData())
+                    .Add("Get all modules", () => GetAllModules())
                     .Add("Quit", () => exit = true);
                 menu.Display();
 
@@ -64,6 +67,16 @@ namespace ConsoleRunner
                 Console.WriteLine($"SimData efficiency: {simData.Efficiency}");
                 Console.WriteLine($"SimData timestamp: {simData.TimeStamp}");
             }
+        }
+
+        static void GetAllModules()
+        {
+            var address = new Uri(ModuleManagerUri);
+            var proxy = new ServiceProxyFactory();
+            var service = proxy.CreateServiceProxy<IModuleManager>(address);
+            var cts = new CancellationTokenSource(15000);
+            var result = service.GetModuleIds(cts.Token).Result;
+            Console.WriteLine($"Returned {result.Count} modules");
         }
 
         static IModules GetActor()
